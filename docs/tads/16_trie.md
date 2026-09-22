@@ -1,27 +1,21 @@
 # 16 — Trie
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+## Scope
 
-## Qué aprender
 Strings organizados por prefijos.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
+## Operations
+
 insert; contains; startsWith; remove; size.
 
-## Representación e invariantes
+## Invariants
+
 marcador de fin de palabra independiente del prefijo.
 
-## Tests importantes
+## Verification
+
 prefijos compartidos; borrar sin perder otras palabras; vacío.
 
-## Costos a comprender
+## Complexity
+
 O(longitud de clave) bajo acceso a hijos constante.
-
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:

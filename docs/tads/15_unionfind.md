@@ -1,27 +1,21 @@
 # 15 — UnionFind
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+## Scope
 
-## Qué aprender
 Conjuntos disjuntos con compresión de caminos.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
+## Operations
+
 makeSet; find; union; connected; componentCount.
 
-## Representación e invariantes
+## Invariants
+
 un representante por componente; tamaños/rangos coherentes.
 
-## Tests importantes
+## Verification
+
 uniones repetidas; conectividad; muchos find.
 
-## Costos a comprender
+## Complexity
+
 amortizado casi constante con compresión + rank/size.
-
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:

@@ -1,27 +1,21 @@
 # 14 — Graph
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+## Scope
 
-## Qué aprender
 Grafo: lista de adyacencia y matriz; BFS/DFS.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
+## Operations
+
 addVertex; addEdge; removeEdge; neighbors; bfs; dfs.
 
-## Representación e invariantes
+## Invariants
+
 coherencia de vértices/aristas; fijar dirigido/no dirigido.
 
-## Tests importantes
+## Verification
+
 aislados; ciclos; componentes; BFS/DFS.
 
-## Costos a comprender
+## Complexity
+
 lista adyacencia: BFS/DFS O(V+E); matriz O(V²) espacio.
-
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:
