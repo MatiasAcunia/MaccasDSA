@@ -1,29 +1,38 @@
-# Estado de aprendizaje
+# Estado real de MaccasDSA
 
-Fase activa: **1 — construir TADs y estructuras**. Fase 2 no iniciada. No hay módulos implementados ni tests todavía.
-Próximo: **01 DynamicArray**; las listas ya conocidas pueden agruparse si se completan de verdad. Para Hash Table, AVL y demás conceptos nuevos, teoría/video antes de codificar.
+Fase activa: **1 — implementar estructuras y TADs en Java**. Fase 2 de biblioteca: no iniciada.
+Alcance base propuesto: 24 módulos; objetivo temporal aproximado ~23 semanas, flexible con 2–4 sesiones semanales. El primer commit de infraestructura NO equivale a una estructura programada. Ningún módulo está cerrado todavía.
 
-| Nº | Módulo | Estado | Evidencia / siguiente paso |
+Próximo: **01 DynamicArray**. La ficha define el contrato inicial, el estudiante define la representación con guía y después programa. El nivel de teoría cambia según conocimiento previo.
+
+| Nº | Módulo | Estado | Próxima acción |
 |---:|---|---|---|
-| 01 | DynamicArray | Pendiente | Diseñar contrato e implementar |
-| 02 | SinglyLinkedList | Pendiente | Diseñar contrato e implementar |
-| 03 | DoublyLinkedList | Pendiente | Diseñar contrato e implementar |
-| 04 | CircularLinkedList | Pendiente | Diseñar contrato e implementar |
-| 05 | Stack | Pendiente | Diseñar contrato e implementar |
-| 06 | Queue | Pendiente | Diseñar contrato e implementar |
-| 07 | Deque | Pendiente | Diseñar contrato e implementar |
-| 08 | HashTableChaining | Pendiente | Diseñar contrato e implementar |
-| 09 | HashTableOpenAddressing | Pendiente | Diseñar contrato e implementar |
-| 10 | BinaryTree | Pendiente | Diseñar contrato e implementar |
-| 11 | BinarySearchTree | Pendiente | Diseñar contrato e implementar |
-| 12 | AVLTree | Pendiente | Diseñar contrato e implementar |
-| 13 | BinaryHeap | Pendiente | Diseñar contrato e implementar |
-| 14 | Graph | Pendiente | Diseñar contrato e implementar |
-| 15 | UnionFind | Pendiente | Diseñar contrato e implementar |
-| 16 | Trie | Pendiente | Diseñar contrato e implementar |
-| 17 | SegmentTree | Pendiente | Diseñar contrato e implementar |
-| 18 | FenwickTree | Pendiente | Diseñar contrato e implementar |
+| 01 | DynamicArray | Pendiente | Abrir ficha y acordar contrato |
+| 02 | SinglyLinkedList | Pendiente | Abrir ficha y acordar contrato |
+| 03 | DoublyLinkedList | Pendiente | Abrir ficha y acordar contrato |
+| 04 | CircularLinkedList | Pendiente | Abrir ficha y acordar contrato |
+| 05 | Stack | Pendiente | Abrir ficha y acordar contrato |
+| 06 | Queue | Pendiente | Abrir ficha y acordar contrato |
+| 07 | Deque | Pendiente | Abrir ficha y acordar contrato |
+| 08 | HashTableChaining | Pendiente | Abrir ficha y acordar contrato |
+| 09 | HashTableOpenAddressing | Pendiente | Abrir ficha y acordar contrato |
+| 10 | BinaryTree | Pendiente | Abrir ficha y acordar contrato |
+| 11 | BinarySearchTree | Pendiente | Abrir ficha y acordar contrato |
+| 12 | AVLTree | Pendiente | Abrir ficha y acordar contrato |
+| 13 | BinaryHeap | Pendiente | Abrir ficha y acordar contrato |
+| 14 | Graph | Pendiente | Abrir ficha y acordar contrato |
+| 15 | UnionFind | Pendiente | Abrir ficha y acordar contrato |
+| 16 | Trie | Pendiente | Abrir ficha y acordar contrato |
+| 17 | SegmentTree | Pendiente | Abrir ficha y acordar contrato |
+| 18 | FenwickTree | Pendiente | Abrir ficha y acordar contrato |
+| 19 | RedBlackTree | Pendiente | Abrir ficha y acordar contrato |
+| 20 | BPlusTree | Pendiente | Abrir ficha y acordar contrato |
+| 21 | SkipList | Pendiente | Abrir ficha y acordar contrato |
+| 22 | BloomFilter | Pendiente | Abrir ficha y acordar contrato |
+| 23 | LRUCache | Pendiente | Abrir ficha y acordar contrato |
+| 24 | GraphAlgorithms | Pendiente | Abrir ficha y acordar contrato |
 
-## Registro de trabajo
+## Diario breve por sesión
+Fecha · módulo · teoría comprendida · decisión de representación · operaciones programadas · tests ejecutados/fallos · commit propio · próxima acción.
 
-Agregar en cada sesión: fecha, módulo, operaciones hechas, tests ejecutados, enlace/sha de commit, bloqueos y próxima acción. No actualizar el estado como «terminado» por leer teoría o compilar un módulo vacío.
+El asistente no da por completado un módulo solo por leer el concepto, compilar o ejecutar un ejemplo.
