@@ -26,5 +26,21 @@
 | 22 | BloomFilter | [Specification](tads/22_bloomfilter.md) |
 | 23 | LRUCache | [Specification](tads/23_lrucache.md) |
 | 24 | GraphAlgorithms | [Specification](tads/24_graphalgorithms.md) |
+| 25 | ElementarySorting | [Specification](tads/25_elementarysorting.md) |
+| 26 | DivideAndConquerSorting | [Specification](tads/26_divideandconquersorting.md) |
+| 27 | HeapAndHybridSorting | [Specification](tads/27_heapandhybridsorting.md) |
+| 28 | DistributionSorting | [Specification](tads/28_distributionsorting.md) |
+| 29 | SequenceSearching | [Specification](tads/29_sequencesearching.md) |
+| 30 | StringSearching | [Specification](tads/30_stringsearching.md) |
 
-Each specification describes required operations, invariants, verification cases and complexity targets.
+## Algorithm coverage
+
+- Elementary sorting: bubble, selection, insertion, Shell.
+- Comparison sorting: merge, quick, three-way quicksort, heap sort.
+- Hybrid sorting: introsort and TimSort as distinct advanced implementations.
+- Distribution sorting: counting, radix and bucket.
+- Sequence searching: linear, binary, lower/upper bound, exponential, jump and interpolation.
+- String searching: naive substring search, KMP, Rabin–Karp and Boyer–Moore.
+- Searches over maps, trees, tries and graphs are specified by their respective data-structure modules.
+
+Algorithm applicability across storage models and collection types is defined in [ALGORITHM_APPLICABILITY](ALGORITHM_APPLICABILITY.md). Iteration is specified separately in [ITERATION](ITERATION.md).

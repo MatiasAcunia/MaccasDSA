@@ -1,6 +1,6 @@
 # MaccasDSA
 
-Data structures and algorithms implemented in Java.
+Data structures, sorting and searching algorithms implemented in Java.
 
 ## Requirements
 
@@ -17,6 +17,6 @@ mvn test
 
 - `src/main/java/dev/maccas/dsa/` — implementations
 - `src/test/java/dev/maccas/dsa/` — tests
-- `docs/tads/` — technical specifications
+- `docs/tads/` — module specifications
 
-See the [module index](docs/ROADMAP.md).
+See the [module index](docs/ROADMAP.md), [algorithm applicability](docs/ALGORITHM_APPLICABILITY.md) and [iteration contract](docs/ITERATION.md).
