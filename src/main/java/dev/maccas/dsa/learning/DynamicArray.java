@@ -70,7 +70,9 @@ public class DynamicArray {
 
         } else if (tamaño == capacidad){
 
-            int[] temp = new int [capacidad + 1];
+            int capacity = (capacidad == 0) ? 10 : capacidad * 2; 
+
+            int[] temp = new int [capacity];
 
             for (int i = 0; i < capacidad; i++){
 
@@ -79,7 +81,7 @@ public class DynamicArray {
             }
 
             temp[capacidad] = value;
-            capacidad++;
+            capacidad = capacity;
             tamaño++;
 
             array = temp;
