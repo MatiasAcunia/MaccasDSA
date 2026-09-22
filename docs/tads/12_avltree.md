@@ -1,27 +1,21 @@
 # 12 — AVLTree
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+## Scope
 
-## Qué aprender
 BST con alturas y rotaciones de balanceo.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
+## Operations
+
 put; get; remove; inorder; size; height.
 
-## Representación e invariantes
+## Invariants
+
 orden BST y factor balance entre -1 y 1.
 
-## Tests importantes
+## Verification
+
 LL; RR; LR; RL; borrar y rebalancear.
 
-## Costos a comprender
+## Complexity
+
 put/get/remove O(log n).
-
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:

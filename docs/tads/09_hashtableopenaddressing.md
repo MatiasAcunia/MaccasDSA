@@ -1,27 +1,21 @@
 # 09 — HashTableOpenAddressing
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+## Scope
 
-## Qué aprender
 Hash map con sondeo dentro del array.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
+## Operations
+
 put(k,v); get(k); containsKey(k); remove(k); size.
 
-## Representación e invariantes
+## Invariants
+
 estados empty/occupied/deleted; probing consistente; factor de carga.
 
-## Tests importantes
+## Verification
+
 colisiones; borrado y búsqueda posterior; resize.
 
-## Costos a comprender
+## Complexity
+
 O(1) esperado bajo carga apropiada; peor O(n).
-
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:

@@ -1,24 +1,31 @@
 # 01 — DynamicArray
 
-Estado: **pendiente**. Primer módulo; la ficha define el **QUÉ**, no contiene una solución.
+## Scope
 
-## Propósito
-Colección contigua redimensionable: practicar índices, capacidad distinta de tamaño, desplazamientos, crecimiento geométrico y coste amortizado.
+Resizable contiguous sequence with indexed access and automatic capacity management.
 
-## Propuesta de contrato para aprobar con el estudiante al iniciar
-Primera implementación en Java sobre `int[]` o `Object[]`/genérica **a decidir juntos antes de programar**, según el valor pedagógico y su familiaridad con referencias/genéricos. No cambiar el tipo a mitad de módulo sin razón.
+## Operations
 
-Operaciones de la primera versión: `size()`, `isEmpty()`, `get(index)`, `set(index, value)`, `add(value)`, `insert(index, value)`, `removeAt(index)`, `clear()`. `capacity()` queda disponible para inspección didáctica; los detalles exactos de tipos de retorno y de excepciones se acuerdan en apertura. `ensureCapacity`/shrink-to-fit quedan como ampliaciones opcionales; el módulo base sí incluye crecimiento automático.
+- `size()`: number of stored elements.
+- `isEmpty()`: whether the sequence has zero elements.
+- `get(index)`: return the element at a valid index.
+- `set(index, value)`: replace the element at a valid index.
+- `add(value)`: append.
+- `insert(index, value)`: insert before the specified index, preserving order.
+- `removeAt(index)`: remove the indexed element, preserving order.
+- `clear()`: remove all logical elements.
+- `capacity()`: report allocated element capacity.
 
-## Comportamiento y tests que importan
-Acceso por índice no altera el tamaño; insertar conserva orden desplazando elementos; remover devuelve/identifica el elemento retirado y cierra el hueco; `size` nunca supera `capacity`; índices fuera de rango fallan de forma definida; append con capacidad llena crece sin perder valores. Probar vacío, un elemento, primer crecimiento, insertar/borrar en cabeza/medio/cola y combinaciones de operaciones.
+Valid access/removal indices satisfy `0 <= index < size`; valid insertion indices satisfy `0 <= index <= size`. Invalid indices raise `IndexOutOfBoundsException`. Capacity expansion preserves existing values and order. The first version may use `int[]`; exact types and return values are defined in the module contract before coding.
 
-## Invariantes que el estudiante debe poder explicar
-Los elementos lógicos ocupan índices `[0, size)`; `capacity` corresponde al almacenamiento asignado; `0 <= size <= capacity`. Acceso indexado O(1), desplazamientos O(n), append amortizado O(1) con crecimiento geométrico.
+## Invariants
 
-## Evidencia
-- [ ] Contrato y decisiones de tipo definidos con el estudiante.
-- [ ] Representación/crecimiento explicados por el estudiante.
-- [ ] Implementación y tests escritos por el estudiante.
-- [ ] Bugs/decisiones y commits propios registrados.
-- [ ] Módulo verificado y cerrado; no trasladar todavía a API pública.
+`0 <= size <= capacity`; logical elements occupy `[0, size)` contiguously.
+
+## Verification
+
+Empty and singleton sequences; bounds errors; first and successive expansions; insert/remove at front, middle and end; mixed operations; clear and refill; preservation of order.
+
+## Complexity
+
+`get`, `set`, `size`: O(1). `add`: amortized O(1) under geometric expansion. `insert` and `removeAt`: O(n).
