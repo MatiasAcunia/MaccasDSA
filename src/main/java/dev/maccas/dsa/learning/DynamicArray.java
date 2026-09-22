@@ -40,7 +40,7 @@ public class DynamicArray {
     //PRE : 0 ≤ index < tamaño()
     //POST : Se devuelve el valor en el indice 'index'
 
-        if (index < 0 || index > tamaño) {
+        if (index < 0 || index >= tamaño) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
         }
 
@@ -51,7 +51,8 @@ public class DynamicArray {
     //PRE : El objeto existe y está en un estado válido; 0 ≤ index < tamaño()
     //POST : El elemento en index pasa a ser value
         
-        if (index < 0 || index > tamaño) {
+        if (index < 0 || index >= tamaño) {
+            
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
         }
 
@@ -92,7 +93,7 @@ public class DynamicArray {
     //PRE : 0 ≤ index ≤ size();
     //POST : value esta en la posicion index
         
-        if (index < 0 || index > tamaño) {
+        if (index < 0 || index >= tamaño) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
         }
 
