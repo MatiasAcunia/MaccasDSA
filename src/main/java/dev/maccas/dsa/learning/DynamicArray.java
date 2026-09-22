@@ -1,6 +1,6 @@
 package dev.maccas.dsa.learning;
 
-class DynamicArray {
+public class DynamicArray {
 
     private int[] array;
     private int tamaño; //Elementos de la secuencia
@@ -8,7 +8,7 @@ class DynamicArray {
     
     public DynamicArray(){
     //PRE : NULL
-    //POST : Se crea un Array Dinamico de tamaño 10
+    //POST : Se crea un Array Dinamico de capacidad 10
 
         this.array = new int[10];
         this.tamaño = 0;
@@ -40,12 +40,20 @@ class DynamicArray {
     //PRE : 0 ≤ index < tamaño()
     //POST : Se devuelve el valor en el indice 'index'
 
+        if (index < 0 || index > tamaño) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
+        }
+
         return array[index];
     }
 
     public void set(int index, int value){
     //PRE : El objeto existe y está en un estado válido; 0 ≤ index < tamaño()
     //POST : El elemento en index pasa a ser value
+        
+        if (index < 0 || index > tamaño) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + index);
+        }
 
         array[index] = value;    
     }
