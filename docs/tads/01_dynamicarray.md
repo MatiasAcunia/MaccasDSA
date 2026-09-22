@@ -1,27 +1,24 @@
 # 01 — DynamicArray
 
-Estado: **pendiente**. Tipo: estructura / implementación concreta.
+Estado: **pendiente**. Primer módulo; la ficha define el **QUÉ**, no contiene una solución.
 
-## Qué aprender
-Capacidad y desplazamientos.
+## Propósito
+Colección contigua redimensionable: practicar índices, capacidad distinta de tamaño, desplazamientos, crecimiento geométrico y coste amortizado.
 
-## Contrato inicial (definir firmas exactas al abrir el módulo)
-get(i); set(i,x); add(x); insert(i,x); removeAt(i); size(); capacity().
+## Propuesta de contrato para aprobar con el estudiante al iniciar
+Primera implementación en Java sobre `int[]` o `Object[]`/genérica **a decidir juntos antes de programar**, según el valor pedagógico y su familiaridad con referencias/genéricos. No cambiar el tipo a mitad de módulo sin razón.
 
-## Representación e invariantes
-0 <= size <= capacity; elementos lógicos contiguos.
+Operaciones de la primera versión: `size()`, `isEmpty()`, `get(index)`, `set(index, value)`, `add(value)`, `insert(index, value)`, `removeAt(index)`, `clear()`. `capacity()` queda disponible para inspección didáctica; los detalles exactos de tipos de retorno y de excepciones se acuerdan en apertura. `ensureCapacity`/shrink-to-fit quedan como ampliaciones opcionales; el módulo base sí incluye crecimiento automático.
 
-## Tests importantes
-vacío; primer crecimiento; inserción y borrado cabeza/medio/cola.
+## Comportamiento y tests que importan
+Acceso por índice no altera el tamaño; insertar conserva orden desplazando elementos; remover devuelve/identifica el elemento retirado y cierra el hueco; `size` nunca supera `capacity`; índices fuera de rango fallan de forma definida; append con capacidad llena crece sin perder valores. Probar vacío, un elemento, primer crecimiento, insertar/borrar en cabeza/medio/cola y combinaciones de operaciones.
 
-## Costos a comprender
-get O(1); add amortizado O(1); insert/remove O(n).
+## Invariantes que el estudiante debe poder explicar
+Los elementos lógicos ocupan índices `[0, size)`; `capacity` corresponde al almacenamiento asignado; `0 <= size <= capacity`. Acceso indexado O(1), desplazamientos O(n), append amortizado O(1) con crecimiento geométrico.
 
-## Registro personal
-- [ ] Teoría y un ejemplo visual entendidos.
-- [ ] Contrato, bordes e invariantes definidos por el estudiante.
-- [ ] Operaciones implementadas por el estudiante, sin copiar un tutorial completo.
-- [ ] Tests y secuencias revisados; complejidad anotada.
-- [ ] Código y evidencia de cierre presentes en GitHub.
-
-Sesiones, decisiones, errores y commits:
+## Evidencia
+- [ ] Contrato y decisiones de tipo definidos con el estudiante.
+- [ ] Representación/crecimiento explicados por el estudiante.
+- [ ] Implementación y tests escritos por el estudiante.
+- [ ] Bugs/decisiones y commits propios registrados.
+- [ ] Módulo verificado y cerrado; no trasladar todavía a API pública.
