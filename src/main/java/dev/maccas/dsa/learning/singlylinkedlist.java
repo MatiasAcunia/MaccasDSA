@@ -1,10 +1,14 @@
+package dev.maccas.dsa.learning;
+
 class nodoLista {
-  private int dato;
-  private nodoLista sig;
+  public int dato;
+  public nodoLista sig;
 
 public void consN (int dato) {
      this.dato = dato;
      this.sig = null;
+}
+
 };
 
 class lista {
@@ -151,8 +155,43 @@ public boolean isSorted() {
 public lista append (lista l1, lista l2) {
     
    lista nueva = new lista();
+
+   nodoLista iter = l1.head;
+   nodoLista prev = null;
+
+   int size = 0;
+
+   while (iter != null) {
+
+    nodoLista nuevo = new nodoLista();
+    nuevo.consN(iter.dato);
+    if (iter == l1.head) nueva.head = iter;
+    if (prev != null) prev.sig = nuevo;
+    size++;
+
+    prev = iter;
+    iter = iter.sig;
+   }
+
+   iter = l2.head;
+
+   while (iter != null) {
+
+    nodoLista nuevo = new nodoLista();
+    nuevo.consN(iter.dato);
+    if (prev != null) prev.sig = nuevo;
+    if (iter.sig == null) nueva.tail = iter;
+    size++;
+
+    prev = iter;
+    iter = iter.sig;
+   }
+
+   nueva.tam = size;
+
+   return nueva;
 }
 }
-}  
+
        
 
