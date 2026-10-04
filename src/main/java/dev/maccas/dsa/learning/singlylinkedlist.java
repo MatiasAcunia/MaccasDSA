@@ -1,10 +1,12 @@
 package dev.maccas.dsa.learning;
 
+import java.util.NoSuchElementException;
+
 class nodoLista {
   public int dato;
   public nodoLista sig;
 
-public void consN (int dato) {
+public nodoLista(int dato) {
      this.dato = dato;
      this.sig = null;
 }
@@ -25,8 +27,7 @@ lista() {
 
 public void cons(int value) {
     
-    nodoLista nuevo = new nodoLista();
-    nuevo.consN(value);
+    nodoLista nuevo = new nodoLista(value);
     nuevo.sig = this.head;
     this.head = nuevo;
     this.tam++;
@@ -36,8 +37,7 @@ public void cons(int value) {
 
 public void snoc(int value) {
 
-    nodoLista nuevo = new nodoLista();
-    nuevo.consN(value);
+    nodoLista nuevo = new nodoLista(value);
     if (head != null) {
 
         this.tail.sig = nuevo;
@@ -53,9 +53,9 @@ public void snoc(int value) {
     
 public int get(int index) {
     
-    if (index < 0) return -1;
+    if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
-    if (index > this.tam - 1) return -1;
+    if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
 
     nodoLista iter = this.head;
     int i = 0;
@@ -71,9 +71,9 @@ public int get(int index) {
 
 public void insertar(int index, int value) {
     
-    if (index < 0) return;
+    if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
-    if (index > this.tam - 1) return;
+    if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
 
     nodoLista iter = this.head;
     nodoLista prev = null;
@@ -85,8 +85,7 @@ public void insertar(int index, int value) {
       i++;
     }
 
-    nodoLista nuevo = new nodoLista();
-    nuevo.consN(value);
+    nodoLista nuevo = new nodoLista(value);
     nuevo.sig = iter;
     if (index != 0) prev.sig = nuevo;
     this.tam++;
@@ -97,7 +96,7 @@ public void insertar(int index, int value) {
         
 public int removeFirst() {
 
-    if (this.head == null) throw new NullPointerException("La lista está vacía");
+    if (this.head == null) throw new NoSuchElementException("La lista está vacía");
 
     nodoLista temp = this.head;
     this.head = this.head.sig;
@@ -113,9 +112,9 @@ public int removeFirst() {
 
 public int removeAt(int index) {
     
-    if (index < 0) return -1;
+    if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
-    if (index > this.tam - 1) return -1;
+    if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
 
     nodoLista iter = this.head;
     nodoLista prev = null;
@@ -154,12 +153,14 @@ public void clear() {
 
 public int first() {
    
+   if (this.head == null) throw new NoSuchElementException("La lista está vacía");
    return this.head.dato;
 
 }
 
 public int last() {
    
+   if (this.tail == null) throw new NoSuchElementException("La lista está vacía");
    return this.tail.dato;
 
 }
@@ -194,8 +195,7 @@ public lista append (lista l1, lista l2) {
    if (iter == null) nueva.head = null;
    while (iter != null) {
 
-    nodoLista nuevo = new nodoLista();
-    nuevo.consN(iter.dato);
+    nodoLista nuevo = new nodoLista(iter.dato);
     if (iter == l1.head) nueva.head = nuevo;
     if (prev != null) prev.sig = nuevo;
     size++;
@@ -209,8 +209,7 @@ public lista append (lista l1, lista l2) {
    if (iter == null) nueva.tail = null;
    while (iter != null) {
 
-    nodoLista nuevo = new nodoLista();
-    nuevo.consN(iter.dato);
+    nodoLista nuevo = new nodoLista(iter.dato);
     if (prev != null) prev.sig = nuevo;
     if (iter.sig == null) nueva.tail = nuevo;
     size++;
