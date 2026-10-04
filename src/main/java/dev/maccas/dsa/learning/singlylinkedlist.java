@@ -30,13 +30,23 @@ public void cons(int value) {
     nuevo.sig = this.head;
     this.head = nuevo;
     this.tam++;
+
+    if(this.tail == null) this.tail = nuevo;
 }
 
 public void snoc(int value) {
 
     nodoLista nuevo = new nodoLista();
     nuevo.consN(value);
-    this.head.sig = nuevo;
+    if (head != null) {
+
+        this.tail.sig = nuevo;
+
+    } else{
+
+        this.head = nuevo;
+    }
+    
     this.tail = nuevo;
     this.tam++;
 }
@@ -52,7 +62,9 @@ public int get(int index) {
 
     while (i != index) {
       iter = iter.sig;
+      i++;
     }
+
 
     return iter.dato;
 }        
@@ -70,13 +82,17 @@ public void insertar(int index, int value) {
     while (i != index) {
       prev = iter;
       iter = iter.sig;
+      i++;
     }
 
     nodoLista nuevo = new nodoLista();
     nuevo.consN(value);
     nuevo.sig = iter;
-    prev.sig = nuevo;
+    if (index != 0) prev.sig = nuevo;
     this.tam++;
+
+    if (index == 0) this.head = nuevo;
+    if (index == this.tam) this.tail = nuevo;
 }
         
 public int removeFirst() {
@@ -85,6 +101,12 @@ public int removeFirst() {
 
     nodoLista temp = this.head;
     this.head = this.head.sig;
+    if (this.tam == 1) {
+
+        this.tail = null;
+
+    }
+    this.tam--;
     return temp.dato;
         
 }
@@ -102,9 +124,17 @@ public int removeAt(int index) {
     while (i != index) {
       prev = iter;
       iter = iter.sig;
+      i++;
     }
 
-    prev.sig = iter.sig;
+    this.tam--;
+    if (index != 0) {  
+        prev.sig = iter.sig;
+    }else {
+        this.head = head.sig;
+    }
+
+    if (index == this.tam) this.tail = prev;
     return iter.dato;
 }
 
@@ -139,11 +169,11 @@ public boolean isSorted() {
    if (this.head == null || this.head == this.tail) return true;
 
    nodoLista iter = this.head;
-   int anterior = Integer.MIN_VALUE;
+  
 
    while (iter != this.tail) {
        
-       if (iter.dato > anterior) return false;
+       if (iter.dato > iter.sig.dato) return false;
 
        iter = iter.sig;
    }
@@ -161,29 +191,31 @@ public lista append (lista l1, lista l2) {
 
    int size = 0;
 
+   if (iter == null) nueva.head = null;
    while (iter != null) {
 
     nodoLista nuevo = new nodoLista();
     nuevo.consN(iter.dato);
-    if (iter == l1.head) nueva.head = iter;
+    if (iter == l1.head) nueva.head = nuevo;
     if (prev != null) prev.sig = nuevo;
     size++;
 
-    prev = iter;
+    prev = nuevo;
     iter = iter.sig;
    }
 
    iter = l2.head;
 
+   if (iter == null) nueva.tail = null;
    while (iter != null) {
 
     nodoLista nuevo = new nodoLista();
     nuevo.consN(iter.dato);
     if (prev != null) prev.sig = nuevo;
-    if (iter.sig == null) nueva.tail = iter;
+    if (iter.sig == null) nueva.tail = nuevo;
     size++;
 
-    prev = iter;
+    prev = nuevo;
     iter = iter.sig;
    }
 
