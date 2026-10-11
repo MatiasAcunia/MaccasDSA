@@ -46,7 +46,7 @@ listaD() {
 
         nodoListaD nuevo = new nodoListaD(value);
         nuevo.ant = this.tail;
-        if (this.tail != null) this.head.sig = nuevo;
+        if (this.tail != null) this.tail.sig = nuevo;
         this.tail = nuevo;
         this.tam++;
         
@@ -80,7 +80,7 @@ listaD() {
         int i = 0;
         nodoListaD iter = this.head;
 
-        while (i != index){
+        while (i != index && iter != null){
 
             iter = iter.sig;
             i++;
@@ -88,23 +88,35 @@ listaD() {
         }
 
         nodoListaD nuevo = new nodoListaD(value);
-        this.tam++;
+        
 
         if (iter != null){
+
         nuevo.sig = iter;
         nuevo.ant = iter.ant;
         iter.ant = nuevo;
         nuevo.ant.sig = nuevo;
+
+        }else if (this.tam == 0) {
+
+            this.head = nuevo;
+            this.tail = nuevo;
+
+        }else if (index == 0) {
+
+            this.head.ant = nuevo;
+            nuevo.sig = this.head;
+            this.head = nuevo;
+
+        } else if (index == this.tam - 1) {
+
+            this.tail.sig = nuevo;
+            nuevo.ant = this.tail;
+            this.tail = nuevo;
+
         }
 
-        if (this.tam == 0) {
-            this.head = nuevo;
-            this.tail = nuevo;
-        }else if (index == 0) {
-            this.head = nuevo;
-        } else if (index == this.tam - 1) {
-            this.tail = nuevo;
-        }
+        this.tam++;
     }
 
     public int removeFirst() {
@@ -113,10 +125,17 @@ listaD() {
 
         if (this.head == null) throw new NoSuchElementException("La lista está vacía");
 
+
         nodoListaD temp = this.head;
         this.head = this.head.sig;
         this.head.ant = null;
         int tempi = temp.dato;
+
+        if (this.tam == 1){ 
+            
+            this.tail = null;
+            this.head = null;
+        }
         this.tam--;
 
         return tempi;
@@ -148,9 +167,9 @@ listaD() {
 
         if (this.tail == iter){
 
+            int tempi = this.tail.dato;
             this.tail = this.tail.ant;
             this.tail.sig = null;
-            int tempi = this.tail.dato;
             this.tam--;
 
             return tempi;
@@ -209,7 +228,7 @@ listaD() {
             
             return true;
 
-        }else if (iter.dato < iter.ant.dato){
+        }else if ((iter.ant != null) && (iter.dato < iter.ant.dato)){
 
             return false;
 
