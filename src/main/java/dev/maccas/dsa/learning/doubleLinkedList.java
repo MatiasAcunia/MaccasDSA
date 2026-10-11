@@ -75,12 +75,24 @@ listaD() {
 
         if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
-        if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
+        if (index > this.tam) throw new IndexOutOfBoundsException("Índice inválido");
+
+        if (index == 0) {
+
+            cons(value);
+            return;
+        }
+
+        if (index == this.tam) {
+
+            snoc(value);
+            return;
+        }
 
         int i = 0;
         nodoListaD iter = this.head;
 
-        while (i != index && iter != null){
+        while (i != index){
 
             iter = iter.sig;
             i++;
@@ -88,34 +100,10 @@ listaD() {
         }
 
         nodoListaD nuevo = new nodoListaD(value);
-        
-
-        if (iter != null){
-
         nuevo.sig = iter;
         nuevo.ant = iter.ant;
+        iter.ant.sig = nuevo;
         iter.ant = nuevo;
-        nuevo.ant.sig = nuevo;
-
-        }else if (this.tam == 0) {
-
-            this.head = nuevo;
-            this.tail = nuevo;
-
-        }else if (index == 0) {
-
-            this.head.ant = nuevo;
-            nuevo.sig = this.head;
-            this.head = nuevo;
-
-        } else if (index == this.tam - 1) {
-
-            this.tail.sig = nuevo;
-            nuevo.ant = this.tail;
-            this.tail = nuevo;
-
-        }
-
         this.tam++;
     }
 
@@ -125,20 +113,21 @@ listaD() {
 
         if (this.head == null) throw new NoSuchElementException("La lista está vacía");
 
-
         nodoListaD temp = this.head;
+
+        if (this.tam == 1){
+
+            this.head = null;
+            this.tail = null;
+            this.tam = 0;
+            return temp.dato;
+        }
+
         this.head = this.head.sig;
         this.head.ant = null;
-        int tempi = temp.dato;
-
-        if (this.tam == 1){ 
-            
-            this.tail = null;
-            this.head = null;
-        }
         this.tam--;
 
-        return tempi;
+        return temp.dato;
     }
 
     public int removeAt(int index) {
