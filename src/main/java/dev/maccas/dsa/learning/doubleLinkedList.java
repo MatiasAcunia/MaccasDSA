@@ -77,22 +77,10 @@ listaD() {
 
         if (index > this.tam) throw new IndexOutOfBoundsException("Índice inválido");
 
-        if (index == 0) {
-
-            cons(value);
-            return;
-        }
-
-        if (index == this.tam) {
-
-            snoc(value);
-            return;
-        }
-
         int i = 0;
         nodoListaD iter = this.head;
 
-        while (i != index){
+        while (i != index && iter != null){
 
             iter = iter.sig;
             i++;
@@ -100,10 +88,34 @@ listaD() {
         }
 
         nodoListaD nuevo = new nodoListaD(value);
-        nuevo.sig = iter;
-        nuevo.ant = iter.ant;
-        iter.ant.sig = nuevo;
-        iter.ant = nuevo;
+        
+
+        if (this.tam == 0) {
+
+            this.head = nuevo;
+            this.tail = nuevo;
+
+        }else if (index == 0) {
+
+            this.head.ant = nuevo;
+            nuevo.sig = this.head;
+            this.head = nuevo;
+
+        } else if (index == this.tam) {
+
+            this.tail.sig = nuevo;
+            nuevo.ant = this.tail;
+            this.tail = nuevo;
+
+        } else if (iter != null){
+
+            nuevo.sig = iter;
+            nuevo.ant = iter.ant;
+            iter.ant = nuevo;
+            nuevo.ant.sig = nuevo;
+
+        }
+
         this.tam++;
     }
 
@@ -113,21 +125,22 @@ listaD() {
 
         if (this.head == null) throw new NoSuchElementException("La lista está vacía");
 
+
         nodoListaD temp = this.head;
+        int tempi = temp.dato;
 
-        if (this.tam == 1){
-
-            this.head = null;
+        if (this.tam == 1){ 
+            
             this.tail = null;
-            this.tam = 0;
-            return temp.dato;
-        }
+            this.head = null;
+        } else {
 
-        this.head = this.head.sig;
-        this.head.ant = null;
+            this.head = this.head.sig;
+            this.head.ant = null;
+        }
         this.tam--;
 
-        return temp.dato;
+        return tempi;
     }
 
     public int removeAt(int index) {
