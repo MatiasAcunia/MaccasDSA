@@ -75,7 +75,19 @@ public void insertar(int index, int value) {
     
     if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
-    if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
+    if (index > this.tam) throw new IndexOutOfBoundsException("Índice inválido");
+
+    if (index == 0) {
+
+        cons(value);
+        return;
+    }
+
+    if (index == this.tam) {
+
+        snoc(value);
+        return;
+    }
 
     nodoListaC iter = this.head;
     nodoListaC prev = null;
@@ -89,22 +101,8 @@ public void insertar(int index, int value) {
 
     nodoListaC nuevo = new nodoListaC(value);
     nuevo.sig = iter;
-    if (index != 0) prev.sig = nuevo;
+    prev.sig = nuevo;
     this.tam++;
-
-    if (index == 0){
-
-        this.head = nuevo;
-        this.tail.sig = this.head;
-
-    }    
-    if (index == this.tam){
-
-        this.tail.sig = nuevo;
-        this.tail = nuevo;
-        this.tail.sig = this.head;
-
-    }    
 }
         
 public int removeFirst() {
@@ -112,15 +110,19 @@ public int removeFirst() {
     if (this.head == null) throw new NoSuchElementException("La lista está vacía");
 
     nodoListaC temp = this.head;
-    this.head = this.head.sig;
+
     if (this.tam == 1) {
 
+        this.head = null;
         this.tail = null;
-
+        this.tam = 0;
+        return temp.dato;
     }
-    this.tam--;
 
+    this.head = this.head.sig;
+    this.tam--;
     this.tail.sig = this.head;
+
     return temp.dato;
         
 }
@@ -130,6 +132,11 @@ public int removeAt(int index) {
     if (index < 0) throw new IndexOutOfBoundsException("Índice inválido");
 
     if (index > this.tam - 1) throw new IndexOutOfBoundsException("Índice inválido");
+
+    if (index == 0) {
+
+        return removeFirst();
+    }
 
     nodoListaC iter = this.head;
     nodoListaC prev = null;
@@ -141,22 +148,17 @@ public int removeAt(int index) {
       i++;
     }
 
-    this.tam--;
-    if (index != 0) {  
+    if (iter == this.tail) {
 
-        prev.sig = iter.sig;
-
-    }else if(index == 0){
-
-        this.head = head.sig;
-        this.tail.sig = this.head;
-
-    }else if(index == this.tam) {
-        
         this.tail = prev;
         this.tail.sig = this.head;
 
-    }    
+    } else {
+
+        prev.sig = iter.sig;
+    }
+
+    this.tam--;
     return iter.dato;
 }
 
@@ -194,8 +196,7 @@ public boolean isSorted() {
 
    nodoListaC iter = this.head;
   
-
-   while (iter != this.head) {
+   while (iter != this.tail) {
        
        if (iter.dato > iter.sig.dato) return false;
 
@@ -210,43 +211,30 @@ public listaC append (listaC l1, listaC l2) {
     
    listaC nueva = new listaC();
 
-   nodoListaC iter = l1.head;
-   nodoListaC prev = null;
+   if (l1.head != null) {
 
-   int size = 0;
+       nodoListaC iter = l1.head;
 
-   if (iter == null) nueva.head = null;
-   while (iter != null) {
+       do {
 
-    nodoListaC nuevo = new nodoListaC(iter.dato);
-    if (iter == l1.head) nueva.head = nuevo;
-    if (prev != null) prev.sig = nuevo;
-    size++;
+           nueva.snoc(iter.dato);
+           iter = iter.sig;
 
-    prev = nuevo;
-    iter = iter.sig;
+       } while (iter != l1.head);
    }
 
-   iter = l2.head;
+   if (l2.head != null) {
 
-   if (iter == null) nueva.tail = null;
-   while (iter != null) {
+       nodoListaC iter = l2.head;
 
-    nodoListaC nuevo = new nodoListaC(iter.dato);
-    if (prev != null) prev.sig = nuevo;
-    if (iter.sig == null) nueva.tail = nuevo;
-    size++;
+       do {
 
-    prev = nuevo;
-    iter = iter.sig;
+           nueva.snoc(iter.dato);
+           iter = iter.sig;
+
+       } while (iter != l2.head);
    }
-
-   nueva.tam = size;
-   nueva.tail.sig = nueva.head;
 
    return nueva;
 }
 }
-
-       
-
