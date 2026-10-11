@@ -220,31 +220,41 @@ public listaC append (listaC l1, listaC l2) {
    int size = 0;
 
    if (iter == null) nueva.head = null;
-   else do {
+   if (iter != null) {
 
-    nodoListaC nuevo = new nodoListaC(iter.dato);
-    if (iter == l1.head) nueva.head = nuevo;
-    if (prev != null) prev.sig = nuevo;
-    size++;
+    boolean primeraVuelta = true;
+    while (primeraVuelta || iter != l1.head) {
 
-    prev = nuevo;
-    iter = iter.sig;
-   } while (iter != l1.head);
+        primeraVuelta = false;
+        nodoListaC nuevo = new nodoListaC(iter.dato);
+        if (iter == l1.head) nueva.head = nuevo;
+        if (prev != null) prev.sig = nuevo;
+        size++;
+
+        prev = nuevo;
+        iter = iter.sig;
+    }
+   }
 
    iter = l2.head;
 
    if (iter == null) nueva.tail = prev;
-   else do {
+   if (iter != null) {
 
-    nodoListaC nuevo = new nodoListaC(iter.dato);
-    if (nueva.head == null) nueva.head = nuevo;
-    if (prev != null) prev.sig = nuevo;
-    if (iter.sig == l2.head) nueva.tail = nuevo;
-    size++;
+    boolean primeraVuelta = true;
+    while (primeraVuelta || iter != l2.head) {
 
-    prev = nuevo;
-    iter = iter.sig;
-   } while (iter != l2.head);
+        primeraVuelta = false;
+        nodoListaC nuevo = new nodoListaC(iter.dato);
+        if (nueva.head == null) nueva.head = nuevo;
+        if (prev != null) prev.sig = nuevo;
+        if (iter.sig == l2.head) nueva.tail = nuevo;
+        size++;
+
+        prev = nuevo;
+        iter = iter.sig;
+    }
+   }
 
    nueva.tam = size;
    if (nueva.tail != null) nueva.tail.sig = nueva.head;
