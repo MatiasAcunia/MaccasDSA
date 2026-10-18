@@ -1,12 +1,12 @@
 package dev.maccas.dsa.learning;
 
-public class dynamicArray {
+public class DynamicArray {
 
     private int[] array;
     private int tamaño; //Elementos de la secuencia
     private int capacidad; //Posiciones disponibles en el almacenamiento
     
-    public dynamicArray(){
+    public DynamicArray(){
     //PRE : NULL
     //POST : Se crea un Array Dinamico de capacidad 10
 
