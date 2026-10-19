@@ -45,6 +45,8 @@ class Stack {
     public int peek() {
     //Devuelve el elemento de la cima sin eliminarlo.
 
+        if (this.top == null) throw new NoSuchElementException("La lista está vacía");
+
         return this.top.dato;
     }
 
